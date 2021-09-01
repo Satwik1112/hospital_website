@@ -1,0 +1,51 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MENU</title>
+    <style>
+        table, th, td
+        {
+            border: 1px solid black;
+            background-color: #f1f1f1;
+            padding: 5px;
+            text-align: center;
+        }
+        .footer
+        {
+            background-color: #f1f1f1;
+            margin: 600px 0px 0px 0px
+            padding: 10px;
+            text-align: center;
+            font-size: 0.5em;
+        }
+    </style>
+</head>
+<body>
+<center><h1>Our Doctors</h1>
+<hr style="height:2px;border-width:0;color:gray;background-color:grey">
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Specialization</th>
+    <th>Contact</th>
+    <th>Time</th>
+    <th>Cabin</th>
+  </tr>
+  {% for doctor in doctors %}
+    <tr>
+        <td>{{doctor.name}}</td>
+        <td>{{doctor.specialization}}</td>
+        <td>{{doctor.contact}}</td>
+        <td>{{doctor.time}}</td>
+        <td>{{doctor.cabin}}</td>
+    </tr>
+  {% endfor %}
+</table>
+</center>
+<hr style="height:2px;border-width:0;color:gray;background-color:grey">
+<div class="footer">
+  <h1>@2021 Slutter Health Hospital</h1>
+</div>
+</body>
+</html>

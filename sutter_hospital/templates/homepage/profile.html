@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>profile</title>
+</head>
+<body>
+{% for data in userdata %}
+<h1>hello {{data.name}}</h1>
+<p>your address is {{data.address}}</p>
+<p>your contact is {{data.contact}}</p>
+<p>your Date of birth is {{data.dob}}</p>
+{% endfor %}
+<a href="login_signup/logout">logout</a>
+</body>
+</html>
