@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Admit</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+	<link rel="stylesheet" href="css/style.css" />
+    <script>
+        function checkPassword(form) {
+                username1 = form.username.value;
+                name1 = form.name.value;
+                password1 = form.password.value;
+                password2 = form.pass.value;
+                dob1 = form.dob.value;
+                contact1 = form.contact.value;
+
+                // If password not entered
+                if (username1 == ''){
+                    alert ("Please enter the user name");
+                    return false;
+                }
+                else if (name1 == ''){
+                    alert ("Please enter the name");
+                    return false;
+                }
+
+                else if (password1 == ''){
+                    alert ("Please enter Password");
+                    return false;
+                }
+
+                // If confirm password not entered
+                else if (password2 == ''){
+                    alert ("Please enter confirm password");
+                    return false;
+                }
+
+                // If Not same return False.
+                else if (password1 != password2) {
+                    alert ("\nPassword did not match: Please try again...")
+                    return false;
+                }
+
+                else if (dob1 == ''){
+                    alert ("Please enter date of birth");
+                    return false;
+                }
+
+                else if (contact1 == ''){
+                    alert ("Please enter contact number");
+                    return false;
+                }
+
+                // If same return True.
+                else{
+                    alert("Everything is fine")
+                    return true;
+                }
+            }
+    </script>
+    <style>
+        body
+	    {
+	        position: relative;
+	    }
+	    .header
+        {
+	        background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+        }
+        .logo
+	    {
+	        position: absolute;
+            right: 0;
+            top: 0px;
+            opacity: 0.6;
+	    }
+        .container
+        {
+            width: 300px;
+            margin: auto;
+            border: 1px solid gray;
+            padding: 25px 0px 20px 100px;
+            //      top right bottom left
+            background-color: #f1f1f1;
+        }
+        .container i
+        {
+            margin-left: -30px;
+            cursor: pointer;
+        }
+        .footer
+        {
+            margin: 600px 0px 0px 0px
+            padding: 10px;
+            text-align: center;
+            font-size: 0.5em;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+  <h1>Admission of New Patient</h1>{% load static %}
+  <img class="logo" src="{% static 'images/sutter-health-squarelogo.png' %}" width="100" height="100">
+</div>
+<hr style="height:2px;border-width:0;color:gray;background-color:grey">
+<div class="container">
+<form action="signup" method="POST" onSubmit = "return checkPassword(this)">{% csrf_token %}
+    <input type="text" name="username" placeholder="User Name"><br><br>
+    <input type="text" name="name" placeholder="Full Name of patient"><br><br>
+    <input type="password" placeholder="Password" id="password" name="password"><br><br>
+    <input type="password" placeholder="Confirm Password" id="pass" name="pass">
+    <i class="bi bi-eye-slash" id="togglePassword"></i><br><br>
+    Date of birth<br>
+    <input type="date" name="dob"><br><br>
+    <input type="text" name="address" placeholder="Address of patient"><br><br>
+    <input type="number" name="contact" placeholder="24x7 Working Contact No."><br><br>
+    <input type="text" name="disease" placeholder="Disease or Problem of Patient"><br><br>
+    <input type="text" name="r_person" placeholder="Name of Responsible Person"><br><br>
+    Photo of patient
+    <input type="file" name="profile_pic"><br><br>
+    <input type="submit" value="Submit" id="bsubmit">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <input type="reset" value="Reset"><br><br>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#pass');
+    togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye / eye slash icon
+    this.classList.toggle('bi-eye');
+    });
+</script>
+</form>
+</div>
+<hr style="height:2px;border-width:0;color:gray;background-color:grey">
+<div class="footer">
+  <h1>@2021 Slutter Health Hospital</h1>
+</div>
+</body>
+</html>
